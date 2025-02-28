@@ -1,0 +1,13 @@
+[project]
+name = "timeforce_backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "iniconfig==2.0.0",
+    "packaging==24.2",
+    "pluggy==1.5.0",
+    "pytest==8.3.4",
+    "ruff>=0.9.9",
+]
