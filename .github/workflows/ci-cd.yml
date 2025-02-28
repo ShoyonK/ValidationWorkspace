@@ -1,0 +1,56 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - '**'  # Runs on all branches
+  pull_request:
+    branches:
+      - '**'  # Runs on all PRs to any branches:
+
+
+jobs:
+  pipeline:
+    name: Lint, Test, and Clean
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install uv
+          uv venv .venv
+          source .venv/bin/activate
+          uv pip sync uv.lock
+
+      - name: Run Ruff Linter
+        run: |
+          source .venv/bin/activate
+          ruff check .
+
+      - name: Run Unit Tests
+        run: |
+          source .venv/bin/activate
+          cd tests
+          mkdir -p test_results
+          pytest --log-file=test_results/test_log.txt
+
+      - name: Upload Test Logs as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: tests/test_results/test_log.txt
+          retention-days: 14
+
+      - name: Clean Workspace
+        run: |
+          rm -rf .venv test_results
+          git clean -xdf

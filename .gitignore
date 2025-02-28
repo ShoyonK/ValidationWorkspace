@@ -1,0 +1,24 @@
+#Ignore settings
+.DS_Store
+
+#Ignore PyCharm IDE settings
+.idea/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment
+.venv/
+env/
+venv/
+.env
+
+# Ignore pytest cache
+.pytest_cache/
+
+# Ignore log files
+*.log
+test_results/
