@@ -3,7 +3,6 @@ from concurrent import futures
 import dut_service_pb2
 import dut_service_pb2_grpc
 import os
-import time
 
 SOCKET_PATH = "/tmp/dut_service.sock"
 

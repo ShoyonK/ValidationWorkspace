@@ -10,4 +10,7 @@ dependencies = [
     "pluggy==1.5.0",
     "pytest==8.3.4",
     "ruff>=0.9.9",
+    "PyQt5==5.15.11",
+    "grpcio==1.71.0",
+    "grpcio-tools==1.62.1",
 ]
