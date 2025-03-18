@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package harness;
+
+service HarnessService {
+    rpc RunTest (TestRequest) returns (TestResponse);
+    rpc ConnectToDUT (ConnectRequest) returns (ConnectResponse);
+}
+
+
+message TestRequest {
+    string test_name = 1;
+}
+
+message TestResponse {
+    string test_name = 1;
+    string status = 2;
+    float execution_time = 3;
+}
+
+message ConnectRequest {}
+
+message ConnectResponse {
+    bool success = 1;
+    string message = 2;
+}

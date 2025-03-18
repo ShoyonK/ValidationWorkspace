@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package instrument;
+
+service InstrumentService {
+    rpc InitializeInstruments (InitRequest) returns (InitResponse);
+}
+
+message InitRequest {}
+
+message InitResponse {
+    bool success = 1;
+    string message = 2;
+}

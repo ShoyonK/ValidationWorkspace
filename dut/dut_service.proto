@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package dut;
+
+service DUTService {
+    rpc ConnectToDUT (ConnectRequest) returns (ConnectResponse);
+    rpc ReadDUTInfo (ReadRequest) returns (ReadResponse);
+    rpc CallFirmwareFunction (FirmwareRequest) returns (FirmwareResponse);
+}
+
+message ConnectRequest {}
+
+message ConnectResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+message ReadRequest {
+    string parameter = 1;
+}
+
+message ReadResponse {
+    string parameter = 1;
+    string value = 2;
+}
+
+message FirmwareRequest {
+    string function_name = 1;
+    string arguemtns = 2;
+}
+
+message FirmwareResponse {
+    bool success = 1;
+    string message = 2;
+}
